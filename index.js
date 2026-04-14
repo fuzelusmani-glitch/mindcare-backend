@@ -12,11 +12,20 @@ dotenv.config();
 connectDB();
 
 const app = express();
-app.use(cors({
-  origin:["http://localhost:5173",
+ 
+const allowedOrigins = [
+  "https://localhost:5173",
   "https://mindcare-frontend-six.vercel.app"
-  ],
-  credentials: true
+];
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true,
 }));
  
 app.use(express.json());
