@@ -14,7 +14,7 @@ connectDB();
 const app = express();
 app.use(cors({
   origin:["http://localhost:5173",
-  "https://your-frontend-domain.vercel.app"
+  "https://mindcare-frontend-six.vercel.app"
   ],
   credentials: true
 }));
