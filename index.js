@@ -14,22 +14,22 @@ connectDB();
 const app = express();
  
 const allowedOrigins = [
-  "https://localhost:5173",
+  "http://localhost:5173",
   "https://mindcare-frontend-six.vercel.app"
 ];
-app.use(cors({
+app.use(cors(
+  {
   origin: function (origin, callback) {
-    // Allow requests with no origin (e.g., Postman, mobile apps)
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true);
     }
+    return callback(new Error("Not allowed by CORS"));
   },
-  methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true,
-}));
-
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"]
+})
+);
  
 app.use(express.json());
 app.use("/api",authRoutes);
