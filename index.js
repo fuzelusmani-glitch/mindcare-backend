@@ -18,14 +18,9 @@ const allowedOrigins = [
   "https://mindcare-frontend-six.vercel.app"
 ];
 app.use(cors({
-  origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
-  credentials: true,
+  origin: allowedOrigins,
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true
 }));
  
 app.use(express.json());
