@@ -15,7 +15,7 @@ const app = express();
  
 const allowedOrigins = [
   "http://localhost:5173",
-  "https://mindcare-frontend-six.vercel.app"
+  "https://mindcare-frontend-puce.vercel.app"
 ];
 app.use(cors(
   {
@@ -147,7 +147,4 @@ app.post("/api/chat", async (req, res) => {
     return res.status(500).json({ error: "OpenAI request failed" });
   }
 });
-
-const port = process.env.PORT || 4000;
-app.listen(port, () => console.log(`Server listening on ${port}`));
 
