@@ -21,6 +21,7 @@ app.use(cors(
   }));
 
 app.use(express.json());
+app.use("/api/", limiter);
 app.use("/api",authRoutes);
 app.get("/",(req, res)=>{
   res.send("MindCare API Running...");
@@ -40,7 +41,7 @@ const limiter = rateLimit({
   windowMs: 15 * 1000, // 15 seconds
   max: 10,             // max 10 requests per window per IP
 });
-app.use("/api/", limiter);
+
 
 // create OpenAI client (server-side only)
 const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
