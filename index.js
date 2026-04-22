@@ -13,15 +13,13 @@ connectDB();
 
 const app = express();
  
-const allowedOrigins = [
-  "http://localhost:5173",
-  "https://mindcare-frontend-puce.vercel.app",
-  "https://mindcare-frontend-git-main-fuzelusmani-glitchs-projects.vercel.app"
-];
+
 app.use(cors(
   {
-  origin:"*",
+  origin:"true",
+  credentials:true
   }));
+app.options("*",cors());
  
 app.use(express.json());
 app.use("/api",authRoutes);
