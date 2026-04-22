@@ -21,12 +21,13 @@ app.use(cors(
   }));
 
 app.use(express.json());
-app.use("/api/", limiter);
+
 app.use("/api",authRoutes);
 app.get("/",(req, res)=>{
   res.send("MindCare API Running...");
 
 });
+app.use("/api/", limiter);
 const PORT = process.env.PORT || 4000;
 app.listen(PORT,()=>
   console.log(`Server running on http://localhost:${PORT}`)
