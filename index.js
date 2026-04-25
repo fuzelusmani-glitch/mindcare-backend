@@ -2,7 +2,7 @@ import express from "express";
 import cors from "cors";
 import rateLimit from "express-rate-limit";
 import dotenv from "dotenv";
-import OpenAI from "openai";
+import chatRoutes from "./routes/chatRoutes.js";
 import connectDB from './config/db.js';
 import authRoutes from "./routes/authRoutes.js";
 
@@ -30,6 +30,7 @@ const limiter = rateLimit({
 
 app.use("/api", limiter);
 app.use("/api", authRoutes);
+app.use("/api", chatRoutes);
 
 app.get("/", (req, res) => {
   res.send("MindCare API Running...");
