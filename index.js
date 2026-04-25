@@ -15,7 +15,7 @@ const app = express();
 app.use(cors({
   origin: [
     'http://localhost:5173',
-    'https://mindcare-frontend-puce.vercel.app/'  // ← PUT YOUR VERCEL URL HERE
+    'https://mindcare-frontend-puce.vercel.app'  // ← PUT YOUR VERCEL URL HERE
   ],
   credentials: true
 }));
