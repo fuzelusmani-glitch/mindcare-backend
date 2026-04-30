@@ -5,6 +5,7 @@ import dotenv from "dotenv";
 import chatRoutes from "./routes/chatRoutes.js";
 import connectDB from "./config/db.js";
 import authRoutes from "./routes/authRoutes.js";
+import moodRoutes from "./routes/moodRoutes.js"
 
 dotenv.config();
 connectDB();
@@ -21,6 +22,7 @@ app.use(cors({
 }));
 
 app.use(express.json());
+app.use("/api/mood", moodRoutes);
 
 // ✅ Rate limiter — 15 MINUTES
 const limiter = rateLimit({
