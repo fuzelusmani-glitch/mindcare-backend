@@ -22,6 +22,7 @@
     "groq-sdk": "^1.1.2",
     "jsonwebtoken": "^9.0.3",
     "mongoose": "^9.4.1",
+    "nodemailer": "^8.0.7",
     "openai": "^6.9.1"
   },
   "devDependencies": {
